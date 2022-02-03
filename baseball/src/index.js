@@ -3,8 +3,6 @@ export default function BaseballGame() {
   const play = (computerInputNumbers, userInputNumbers) => {
     resultReset();
     const resultString = getResultString(computerInputNumbers, userInputNumbers);
-    console.log(computerInputNumbers, userInputNumbers, 'aa')
-    console.log(resultString);
     printResult(resultString);
   }
 
@@ -48,7 +46,6 @@ export default function BaseballGame() {
     } else {
       status = 'perfect'
     }
-
     return status;
   }
 
@@ -67,34 +64,28 @@ export default function BaseballGame() {
     const input = inputNum.split('');
     let strike = 0;
     let ball = 0;
-
     for (let i = 0; i < input.length; i++) {
       if (target[i] === input[i]) {
         strike++;
       } else if (target.includes(input[i])) {
         ball++;
-      }
-      // no else
+      } // no else
     }
-
     return [ball, strike];
   }
 
   const getResultString = (target, input) => {
     const strikeBallArr = computeCorrectCnt(target, input)
-    const ball = strikeBallArr[0];
-    const strike = strikeBallArr[1];
     let resultString = '';
-    if (!ball && !strike) {
+    if (!strikeBallArr[0] && !strikeBallArr[1]) {
       resultString = '낫싱';
-    } else if (!ball && strike) {
-      resultString = `${strike}스트라이크`;
-    } else if (ball && !strike) {
-      resultString = `${ball}볼`
+    } else if (!strikeBallArr[0] && strikeBallArr[1]) {
+      resultString = `${strikeBallArr[1]}스트라이크`;
+    } else if (strikeBallArr[0] && !strikeBallArr[1]) {
+      resultString = `${strikeBallArr[0]}볼`
     } else {
-      resultString = `${ball}볼 ${strike}스트라이크`
+      resultString = `${strikeBallArr[0]}볼 ${strikeBallArr[1]}스트라이크`
     }
-
     return resultString;
   }
 
@@ -102,20 +93,25 @@ export default function BaseballGame() {
     const resBox = document.getElementById('result');
     const res = document.createElement('p');
     if (resultString === '3스트라이크') {
-      const restartDesc = document.createElement('span');
-      const restartBtn = document.createElement('button');
-      restartDesc.innerText = '게임을 새로 시작하시겠습니까?';
-      restartBtn.innerText = '게임 재시작';
       res.innerHTML = '🎉 <strong>정답을 맞추셨습니다!</strong> 🎉';
-      restartBtn.setAttribute('id', 'game-restart-button');
-      restartBtn.onclick = restart;
+      const [restartDesc, restartBtn] = correctResult();
       resBox.appendChild(res);
       resBox.appendChild(restartDesc);
       resBox.appendChild(restartBtn);
-    } else {
+    } else { // 틀렸을때
       res.innerText = resultString;
       resBox.appendChild(res);
     }
+  }
+
+  const correctResult = () => {
+    const restartDesc = document.createElement('span');
+    const restartBtn = document.createElement('button');
+    restartDesc.innerText = '게임을 새로 시작하시겠습니까?';
+    restartBtn.innerText = '게임 재시작';
+    restartBtn.setAttribute('id', 'game-restart-button');
+    restartBtn.onclick = restart;
+    return [restartDesc, restartBtn];
   }
 
   const resultReset = () => {
