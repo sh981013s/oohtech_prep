@@ -25,6 +25,12 @@
 
 <br>
 
+## 💁‍♂️ 구현 기능 목록
+
+---
+
+* [/docs/README.md](/docs/README.md) 문서 참조.
+
 ### 💻 실행 결과
 
 ![baseball_result_gif](https://github.com/woowacourse/javascript-baseball-precourse/blob/main/images/result.gif?raw=true)
