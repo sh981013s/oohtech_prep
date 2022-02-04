@@ -1,4 +1,7 @@
+import {targetNumber} from './targetNumber.js';
+
 export default function BaseballGame() {
+    targetNumber();
 }
 
-export const baseballGame = new BaseballGame();
+new BaseballGame();
