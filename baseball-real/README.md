@@ -29,7 +29,7 @@
 
 ---
 
-* [/docs/README.md](/docs/README.md) 문서 참조.
+* [docs/README.md](docs/README.md) 문서 참조.
 
 ### 💻 실행 결과
 
