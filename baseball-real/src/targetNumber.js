@@ -23,3 +23,7 @@ export const saveTargetNumber = () => {
   const generatedTargetNumber = targetNumber();
   localStorage.setItem('targetNumber', generatedTargetNumber);
 };
+
+export const getTargetNumber = () => {
+  return localStorage.getItem('targetNumber');
+};
