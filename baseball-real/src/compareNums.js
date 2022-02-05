@@ -1,7 +1,5 @@
-import { getTargetNumber } from './targetNumber';
-
-export const getResString = (userInputNum) => {
-  const [strike, ball] = computeRes(userInputNum);
+export const getResString = (targetNumber, userInputNum) => {
+  const [strike, ball] = computeRes(targetNumber, userInputNum);
   let resString = '';
   if (strike === 0 && ball === 0) {
     resString = '낫싱';
@@ -15,8 +13,8 @@ export const getResString = (userInputNum) => {
   return resString;
 };
 
-const computeRes = (userInputNum) => {
-  const targetArr = getTargetNumber().split('');
+const computeRes = (targetNumber, userInputNum) => {
+  const targetArr = targetNumber.split('');
   const userInputArr = userInputNum.split('');
   const cnt = [0, 0]; // strike, ball
   for (let i = 0; i < userInputNum.length; i++) {

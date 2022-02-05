@@ -12,7 +12,7 @@ export const inputPassedValidation = (userInput) => {
     alert(INPUT_ERROR_MSG.NO_REPEAT_ERR);
     $userInput.value = '';
   } else {
-    return 123;
+    return true;
   }
 };
 
