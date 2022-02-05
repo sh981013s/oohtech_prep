@@ -18,3 +18,8 @@ const isTargetNumberIncludeZero = (tempTarget) => {
   const regex = /0/g;
   return regex.test(tempTarget);
 };
+
+export const saveTargetNumber = () => {
+  const generatedTargetNumber = targetNumber();
+  localStorage.setItem('targetNumber', generatedTargetNumber);
+};
