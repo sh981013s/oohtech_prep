@@ -1,12 +1,10 @@
 const generateTargetNumber = () => {
-  let targetNumber = MissionUtils.Random.pickNumberInRange(123, 987).toString(); // default value
-  while (
-    !isTargetNumberUnique(targetNumber) ||
-    isTargetNumberIncludeZero(targetNumber)
-  ) {
-    targetNumber = MissionUtils.Random.pickNumberInRange(123, 987).toString();
+  const randomUtils = MissionUtils.Random.pickNumberInRange;
+  const targetNumber = new Set();
+  while (targetNumber.size < 3) {
+    targetNumber.add(randomUtils(1, 9));
   }
-  return targetNumber;
+  return [...targetNumber];
 };
 
 const isTargetNumberUnique = (tempTarget) => {
@@ -21,7 +19,8 @@ const isTargetNumberIncludeZero = (tempTarget) => {
 
 export const saveTargetNumber = () => {
   const generatedTargetNumber = generateTargetNumber();
-  localStorage.setItem('targetNumber', generatedTargetNumber);
+  console.log(generatedTargetNumber.join(''));
+  localStorage.setItem('targetNumber', generatedTargetNumber.join(''));
 };
 
 export const getTargetNumber = () => {
