@@ -1,4 +1,20 @@
-export const isInputPassedValidation = (userInput) => {};
+import { INPUT_ERROR_MSG } from './data/constants.js';
+import { $userInput } from './data/elements.js';
+
+export const inputPassedValidation = (userInput) => {
+  if (!isInputLengthThree(userInput)) {
+    alert(INPUT_ERROR_MSG.LENGTH_ERR);
+    $userInput.value = '';
+  } else if (!isInputNotIncludeZero(userInput)) {
+    alert(INPUT_ERROR_MSG.INCLUDE_ZERO_ERR);
+    $userInput.value = '';
+  } else if (!isInputUnique(userInput)) {
+    alert(INPUT_ERROR_MSG.NO_REPEAT_ERR);
+    $userInput.value = '';
+  } else {
+    return 123;
+  }
+};
 
 const isInputLengthThree = (userInput) => {
   return userInput.length === 3;
