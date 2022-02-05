@@ -1,7 +1,7 @@
-import {targetNumber} from './targetNumber.js';
+import { targetNumber } from './targetNumber.js';
 
 export default function BaseballGame() {
-    targetNumber();
+  console.log(targetNumber());
 }
 
 new BaseballGame();
