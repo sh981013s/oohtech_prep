@@ -1,4 +1,4 @@
-export const targetNumber = () => {
+const generateTargetNumber = () => {
   let targetNumber = MissionUtils.Random.pickNumberInRange(123, 987).toString(); // default value
   while (
     !isTargetNumberUnique(targetNumber) ||
@@ -20,7 +20,7 @@ const isTargetNumberIncludeZero = (tempTarget) => {
 };
 
 export const saveTargetNumber = () => {
-  const generatedTargetNumber = targetNumber();
+  const generatedTargetNumber = generateTargetNumber();
   localStorage.setItem('targetNumber', generatedTargetNumber);
 };
 
