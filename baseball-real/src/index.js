@@ -3,7 +3,7 @@ import { $submit, $userInput } from './data/elements.js';
 import inputPassedValidation from './inputValidation.js';
 import getResString from './compareNums.js';
 import changeResult from './changeResult.js';
-import { resetResult } from './restart';
+import { resetResult } from './restart.js';
 
 export default function BaseballGame() {
   const play = (computerInputNumbers, userInputNumbers) => {
