@@ -1,6 +1,9 @@
-import { resetResult } from './changeResult.js';
 import { saveTargetNumber } from './targetNumber.js';
-import { $userInput } from './data/elements.js';
+import { $result, $userInput } from './data/elements.js';
+
+export const resetResult = () => {
+  $result.innerHTML = '';
+};
 
 export const restart = () => {
   $userInput.value = '';

@@ -1,16 +1,11 @@
 import { getTargetNumber, saveTargetNumber } from './targetNumber.js';
 import { $submit, $userInput } from './data/elements.js';
-import { inputPassedValidation } from './inputValidation.js';
-import { getResString } from './compareNums.js';
-import { changeResult, resetResult } from './changeResult.js';
+import inputPassedValidation from './inputValidation.js';
+import getResString from './compareNums.js';
+import changeResult from './changeResult.js';
+import { resetResult } from './restart';
 
 export default function BaseballGame() {
-  const init = () => {
-    resetResult();
-    saveTargetNumber();
-    $submit.addEventListener('click', userInputSubmitted);
-  };
-
   const play = (computerInputNumbers, userInputNumbers) => {
     return getResString(computerInputNumbers, userInputNumbers);
   };
@@ -23,6 +18,12 @@ export default function BaseballGame() {
       resString = play(getTargetNumber(), $userInput.value);
     }
     changeResult(resString);
+  };
+
+  const init = () => {
+    resetResult();
+    saveTargetNumber();
+    $submit.addEventListener('click', userInputSubmitted);
   };
 
   init();

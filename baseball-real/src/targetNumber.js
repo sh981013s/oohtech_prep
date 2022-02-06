@@ -1,4 +1,5 @@
 const generateTargetNumber = () => {
+  // eslint-disable-next-line no-undef
   const randomUtils = MissionUtils.Random.pickNumberInRange;
   const targetNumber = new Set();
   while (targetNumber.size < 3) {

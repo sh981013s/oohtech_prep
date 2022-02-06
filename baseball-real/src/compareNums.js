@@ -1,4 +1,18 @@
-export const getResString = (targetNumber, userInputNum) => {
+const computeRes = (targetNumber, userInputNum) => {
+  const targetArr = targetNumber.split('');
+  const userInputArr = userInputNum.split('');
+  const cnt = [0, 0]; // strike, ball
+  for (let i = 0; i < userInputNum.length; i++) {
+    if (targetArr[i] === userInputArr[i]) {
+      cnt[0] += 1;
+    } else if (targetArr.includes(userInputArr[i])) {
+      cnt[1] += 1;
+    }
+  }
+  return cnt;
+};
+
+const getResString = (targetNumber, userInputNum) => {
   const [strike, ball] = computeRes(targetNumber, userInputNum);
   let resString = '';
   if (strike === 0 && ball === 0) {
@@ -13,16 +27,4 @@ export const getResString = (targetNumber, userInputNum) => {
   return resString;
 };
 
-const computeRes = (targetNumber, userInputNum) => {
-  const targetArr = targetNumber.split('');
-  const userInputArr = userInputNum.split('');
-  const cnt = [0, 0]; // strike, ball
-  for (let i = 0; i < userInputNum.length; i++) {
-    if (targetArr[i] === userInputArr[i]) {
-      cnt[0]++;
-    } else if (targetArr.includes(userInputArr[i])) {
-      cnt[1]++;
-    }
-  }
-  return cnt;
-};
+export default getResString;

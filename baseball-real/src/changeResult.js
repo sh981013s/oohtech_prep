@@ -1,12 +1,8 @@
 import { $result } from './data/elements.js';
 import { createElement } from './utils.js';
-import { restart } from './restart.js';
+import { restart, resetResult } from './restart.js';
 
-export const resetResult = () => {
-  $result.innerHTML = '';
-};
-
-export const changeResult = (resString) => {
+const changeResult = (resString) => {
   resetResult();
   if (resString !== '3스트라이크') {
     $result.innerText = resString;
@@ -20,3 +16,5 @@ export const changeResult = (resString) => {
     $result.appendChild(restartBtn);
   }
 };
+
+export default changeResult;
